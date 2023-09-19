@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/UDEMY_ReactiveProgrammingwithSpringFramework5.iml" filepath="$PROJECT_DIR$/.idea/UDEMY_ReactiveProgrammingwithSpringFramework5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netflux/netflux.iml" filepath="$PROJECT_DIR$/netflux/netflux.iml" />
     </modules>
   </component>
 </project>

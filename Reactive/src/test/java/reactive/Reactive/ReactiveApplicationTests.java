@@ -1,9 +1,9 @@
 package reactive.Reactive;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.SpringBootConfiguration;
 
-@SpringBootTest
+@SpringBootConfiguration
 class ReactiveApplicationTests {
 	@Test
 	void contextLoads() {
