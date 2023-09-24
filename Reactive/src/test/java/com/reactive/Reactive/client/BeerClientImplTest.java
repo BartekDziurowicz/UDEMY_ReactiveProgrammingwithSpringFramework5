@@ -1,8 +1,13 @@
 package com.reactive.Reactive.client;
 
 import com.reactive.Reactive.config.WebClientConfig;
+import com.reactive.Reactive.model.BeerPagedList;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import reactor.core.publisher.Mono;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class BeerClientImplTest {
 
@@ -14,17 +19,19 @@ class BeerClientImplTest {
     }
 
     @Test
-    void getBeerById() {
+    @Disabled
+    void listBeers() {
         //given
-
+        Mono<BeerPagedList> beerPagedListMono = beerClient.listBeers(null, null, null, null, null);
         //when
-
+        BeerPagedList pagedList = beerPagedListMono.block();
         //then
-
+        assertThat(pagedList).isNotNull();
+        assertThat(pagedList.getContent().size()).isGreaterThan(0);
     }
 
     @Test
-    void listBeers() {
+    void getBeerById() {
         //given
 
         //when

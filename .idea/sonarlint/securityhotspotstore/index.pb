@@ -25,8 +25,6 @@ v
 FReactive/src/main/java/com/reactive/Reactive/bootstrap/BeerLoader.java,1/5/1577647d62a4ab76e48b11228e925ea200351645
 |
 LReactive/src/main/java/com/reactive/Reactive/web/model/v2/BeerStyleEnum.java,5/3/53895976c548efdc44edc487edc7967870f61aef
-S
-#Reactive/src/main/docker/Dockerfile,1/8/1884618bc0a403fd1cd09127d9bf7c328f9f9672
 z
 JReactive/src/main/java/com/reactive/Reactive/services/CustomerService.java,9/0/9015f36a24ab3265db22ee66924e752d3b8fcba5
 {

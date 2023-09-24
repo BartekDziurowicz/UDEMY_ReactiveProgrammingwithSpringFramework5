@@ -1,5 +1,6 @@
 package com.reactive.Reactive.client;
 
+import com.reactive.Reactive.config.WebClientProperties;
 import com.reactive.Reactive.model.BeerDto;
 import com.reactive.Reactive.model.BeerPagedList;
 import lombok.RequiredArgsConstructor;
@@ -25,7 +26,10 @@ public class BeerClientImpl implements BeerClient {
 
     @Override
     public Mono<BeerPagedList> listBeers(Integer pageNumber, Integer pageSize, String beerName, String beerStyle, Boolean showInventoryOnhand) {
-        return null;
+        return webClient.get()
+                .uri(WebClientProperties.BEER_V1_PATH)
+                .retrieve()
+                .bodyToMono(BeerPagedList.class);
     }
 
     @Override
