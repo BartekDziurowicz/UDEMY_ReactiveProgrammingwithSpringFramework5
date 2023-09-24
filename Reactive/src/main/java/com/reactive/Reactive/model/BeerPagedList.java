@@ -1,4 +1,4 @@
-package com.reactive.Reactive.web.model;
+package com.reactive.Reactive.model;
 
 
 import com.fasterxml.jackson.annotation.JsonCreator;
