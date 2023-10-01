@@ -1,12 +1,16 @@
 package com.reactive.Reactive.client;
 
 import com.reactive.Reactive.config.WebClientConfig;
+import com.reactive.Reactive.model.BeerDto;
 import com.reactive.Reactive.model.BeerPagedList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BeerClientImplTest {
 
@@ -53,11 +57,43 @@ class BeerClientImplTest {
     @Test
     void getBeerById() {
         //given
-
+        Mono<BeerPagedList> beerPagedListMono = beerClient.listBeers(null, null, null, null, null);
+        BeerPagedList pagedList = beerPagedListMono.block();
+        UUID beerId = pagedList.getContent().get(0).getId();
         //when
-
+        Mono<BeerDto> beerDtoMono = beerClient.getBeerById(beerId, false);
+        BeerDto beerDto = beerDtoMono.block();
         //then
+        assertEquals(beerId, beerDto.getId());
+        // API returning inventory when should not be
+//        assertNull(beerDto.getQuantityOnHand());
+    }
 
+    @Test
+    void getBeerByIdShowInventoryTrue() {
+        //given
+        Mono<BeerPagedList> beerPagedListMono = beerClient.listBeers(null, null, null, null, null);
+        BeerPagedList pagedList = beerPagedListMono.block();
+        UUID beerId = pagedList.getContent().get(0).getId();
+        //when
+        Mono<BeerDto> beerDtoMono = beerClient.getBeerById(beerId, true);
+        BeerDto beerDto = beerDtoMono.block();
+        //then
+        assertEquals(beerId, beerDto.getId());
+        assertNotNull(beerDto.getQuantityOnHand());
+    }
+
+    @Test
+    void getBeerByUPC() {
+        //given
+        Mono<BeerPagedList> beerPagedListMono = beerClient.listBeers(null, null, null, null, null);
+        BeerPagedList pagedList = beerPagedListMono.block();
+        String beerUpc = pagedList.getContent().get(0).getUpc();
+        //when
+        Mono<BeerDto> beerDtoMono = beerClient.getBeerByUPC(beerUpc);
+        BeerDto beerDto = beerDtoMono.block();
+        //then
+        assertEquals(beerUpc, beerDto.getUpc());
     }
 
     @Test
@@ -90,13 +126,4 @@ class BeerClientImplTest {
 
     }
 
-    @Test
-    void getBeerByUPC() {
-        //given
-
-        //when
-
-        //then
-
-    }
 }
