@@ -27,3 +27,7 @@ HReactive/src/main/java/com/reactive/Reactive/config/WebClientConfig.java,7/0/7
 Reactive/pom.xml,8/f/8f0d72916780c623eb82d79d16bdd315de62604e
 {
 KReactive/src/test/java/com/reactive/Reactive/client/BeerClientImplTest.java,6/8/68b5597950411ed37b6575109ac3c9c2c884e76f
+S
+#.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8/8/88a9255124c95bdc913197c120a8d560edc59c8e
