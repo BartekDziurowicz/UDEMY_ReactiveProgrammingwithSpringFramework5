@@ -138,11 +138,14 @@ class BeerClientImplTest {
     @Test
     void deleteBeerById() {
         //given
-
+        Mono<BeerPagedList> beerPagedListMono = beerClient.listBeers(null, null, null, null, null);
+        BeerPagedList pagedList = beerPagedListMono.block();
+        BeerDto beerDto = pagedList.getContent().get(0);
         //when
-
+        Mono<ResponseEntity<Void>> responseEntityMono = beerClient.deleteBeerById(beerDto.getId());
+        ResponseEntity<Void> responseEntity = responseEntityMono.block();
         //then
-
+        assertEquals(HttpStatus.NO_CONTENT, responseEntity.getStatusCode());
     }
 
 }
