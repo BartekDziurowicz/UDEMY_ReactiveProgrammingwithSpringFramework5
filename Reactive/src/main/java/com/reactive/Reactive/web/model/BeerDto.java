@@ -1,4 +1,4 @@
-package com.reactive.Reactive.model;
+package com.reactive.Reactive.web.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Null;

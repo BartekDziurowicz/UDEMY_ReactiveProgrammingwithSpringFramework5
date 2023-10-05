@@ -1,4 +1,4 @@
-package com.reactive.Reactive.model.v2;
+package com.reactive.Reactive.web.model;
 
 
 public enum BeerStyleEnum {
