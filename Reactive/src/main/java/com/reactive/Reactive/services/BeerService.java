@@ -7,8 +7,6 @@ import com.reactive.Reactive.web.model.BeerStyleEnum;
 import org.springframework.data.domain.PageRequest;
 import reactor.core.publisher.Mono;
 
-import java.util.UUID;
-
 /**
  * Created by jt on 2019-04-20.
  */
@@ -19,7 +17,7 @@ public interface BeerService {
 
     Mono<BeerDto> saveNewBeer(BeerDto beerDto);
 
-    BeerDto updateBeer(UUID beerId, BeerDto beerDto);
+    Mono<BeerDto> updateBeer(Integer beerId, BeerDto beerDto);
 
     Mono<BeerDto> getByUpc(String upc);
 
