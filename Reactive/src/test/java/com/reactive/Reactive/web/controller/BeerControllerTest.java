@@ -62,7 +62,7 @@ class BeerControllerTest {
         //given
         //when
         String upc = BeerLoader.BEER_1_UPC;
-        given(beerService.getByUpc(any())).willReturn(validBeer);
+        given(beerService.getByUpc(any())).willReturn(Mono.just(validBeer));
         //then
         webTestClient.get()
                 .uri("/api/v1/beerUpc/" + upc)
@@ -79,7 +79,7 @@ class BeerControllerTest {
         List<BeerDto> beerDtoList = Arrays.asList(validBeer);
         BeerPagedList beerPagedList = new BeerPagedList(beerDtoList, PageRequest.of(1,1), beerDtoList.size());
         //when
-        given(beerService.listBeers(any(), any(), any(), any())).willReturn(beerPagedList);
+        given(beerService.listBeers(any(), any(), any(), any())).willReturn(Mono.just(beerPagedList));
         //then
         webTestClient.get()
                 .uri("/api/v1/beer")
