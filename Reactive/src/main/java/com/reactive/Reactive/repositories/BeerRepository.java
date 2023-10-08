@@ -1,6 +1,5 @@
 package com.reactive.Reactive.repositories;
 
-
 import com.reactive.Reactive.domain.Beer;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 

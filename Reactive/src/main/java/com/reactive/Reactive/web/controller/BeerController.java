@@ -29,10 +29,10 @@ public class BeerController {
 
     @GetMapping(produces = { "application/json" }, path = "beer")
     public ResponseEntity<Mono<BeerPagedList>> listBeers(@RequestParam(value = "pageNumber", required = false) Integer pageNumber,
-                                                   @RequestParam(value = "pageSize", required = false) Integer pageSize,
-                                                   @RequestParam(value = "beerName", required = false) String beerName,
-                                                   @RequestParam(value = "beerStyle", required = false) BeerStyleEnum beerStyle,
-                                                   @RequestParam(value = "showInventoryOnHand", required = false) Boolean showInventoryOnHand){
+                                                         @RequestParam(value = "pageSize", required = false) Integer pageSize,
+                                                         @RequestParam(value = "beerName", required = false) String beerName,
+                                                         @RequestParam(value = "beerStyle", required = false) BeerStyleEnum beerStyle,
+                                                         @RequestParam(value = "showInventoryOnHand", required = false) Boolean showInventoryOnHand){
 
         if (showInventoryOnHand == null) {
             showInventoryOnHand = false;
@@ -53,7 +53,7 @@ public class BeerController {
 
     @GetMapping("beer/{beerId}")
     public ResponseEntity<Mono<BeerDto>> getBeerById(@PathVariable("beerId") Integer beerId,
-                                                    @RequestParam(value = "showInventoryOnHand", required = false) Boolean showInventoryOnHand){
+                                                     @RequestParam(value = "showInventoryOnHand", required = false) Boolean showInventoryOnHand){
         if (showInventoryOnHand == null) {
             showInventoryOnHand = false;
         }
@@ -80,9 +80,6 @@ public class BeerController {
 
     @PutMapping("beer/{beerId}")
     public ResponseEntity<Void> updateBeerById(@PathVariable("beerId") UUID beerId, @RequestBody @Validated BeerDto beerDto){
-
-        beerService.updateBeer(beerId, beerDto);
-
         return ResponseEntity.noContent().build();
     }
 
