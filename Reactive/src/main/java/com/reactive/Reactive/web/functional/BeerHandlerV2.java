@@ -2,6 +2,7 @@ package com.reactive.Reactive.web.functional;
 
 
 import com.reactive.Reactive.services.BeerService;
+import com.reactive.Reactive.web.controller.NotFoundException;
 import com.reactive.Reactive.web.model.BeerDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -75,5 +76,12 @@ public class BeerHandlerV2 {
                         return ServerResponse.notFound().build();
                     }
                 });
+    }
+
+    public Mono<ServerResponse> deleteBeer(ServerRequest request) {
+        return beerService.reactiveDeleteById(Integer.valueOf(request.pathVariable("beerId")))
+                .flatMap(voidMono -> {
+                    return ServerResponse.ok().build();
+                }).onErrorResume(e -> e instanceof NotFoundException, e -> ServerResponse.notFound().build());
     }
 }

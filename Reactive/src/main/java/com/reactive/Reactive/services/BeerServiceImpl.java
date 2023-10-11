@@ -2,6 +2,7 @@ package com.reactive.Reactive.services;
 
 import com.reactive.Reactive.domain.Beer;
 import com.reactive.Reactive.repositories.BeerRepository;
+import com.reactive.Reactive.web.controller.NotFoundException;
 import com.reactive.Reactive.web.mappers.BeerMapper;
 import com.reactive.Reactive.web.model.BeerDto;
 import com.reactive.Reactive.web.model.BeerPagedList;
@@ -114,5 +115,15 @@ public class BeerServiceImpl implements BeerService {
     @Override
     public void deleteBeerById(Integer beerId) {
         beerRepository.deleteById(beerId).subscribe();
+    }
+
+    @Override
+    public Mono<Void> reactiveDeleteById(Integer beerId) {
+        return beerRepository.findById(beerId)
+                .switchIfEmpty(Mono.error(new NotFoundException()))
+                .map(beer -> {
+                    return beer.getId();
+                })
+                .flatMap(foundId -> beerRepository.deleteById(foundId));
     }
 }
